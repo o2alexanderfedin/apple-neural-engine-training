@@ -1,0 +1,117 @@
+{
+ "torch": "2.15.0+cpu",
+ "math_sdpa": {
+  "fw": {
+   "n_inputs": 12,
+   "aten_ops": {
+    "aten.view.default": 28,
+    "aten.mul.Tensor": 14,
+    "aten.permute.default": 12,
+    "aten.unsqueeze.default": 8,
+    "aten.add.Tensor": 7,
+    "aten.mm.default": 7,
+    "aten.expand.default": 6,
+    "aten.slice.Tensor": 4,
+    "aten.sub.Tensor": 3,
+    "aten.clone.default": 3,
+    "aten.pow.Tensor_Scalar": 2,
+    "aten.mean.dim": 2,
+    "aten.rsqrt.default": 2,
+    "aten.cat.default": 2,
+    "aten.mul.Scalar": 2,
+    "aten.arange.start_step": 2,
+    "aten.scalar_tensor.default": 2,
+    "aten.where.self": 2,
+    "aten.bmm.default": 2,
+    "aten.logical_not.default": 2,
+    "aten.full.default": 1,
+    "aten.le.Scalar": 1,
+    "aten.logical_and.default": 1,
+    "aten._softmax.default": 1,
+    "aten.eq.Scalar": 1,
+    "aten.any.dim": 1,
+    "aten.full_like.default": 1,
+    "aten.sigmoid.default": 1
+   }
+  },
+  "bw": {
+   "n_inputs": 35,
+   "aten_ops": {
+    "aten.permute.default": 37,
+    "aten.view.default": 30,
+    "aten.mul.Tensor": 27,
+    "aten.mm.default": 14,
+    "aten.add.Tensor": 14,
+    "aten.sum.dim_IntList": 7,
+    "aten.mul.Scalar": 6,
+    "aten.pow.Tensor_Scalar": 4,
+    "aten.bmm.default": 4,
+    "aten.select.int": 4,
+    "aten.full.default": 4,
+    "aten.slice_scatter.default": 4,
+    "aten.clone.default": 3,
+    "aten.sub.Tensor": 2,
+    "aten.expand.default": 2,
+    "aten.div.Scalar": 2,
+    "aten.squeeze.dims": 2,
+    "aten.neg.default": 2,
+    "aten.sigmoid.default": 1
+   }
+  }
+ },
+ "math_sdpa_plain_softmax": {
+  "fw": {
+   "n_inputs": 12,
+   "aten_ops": {
+    "aten.view.default": 28,
+    "aten.mul.Tensor": 14,
+    "aten.permute.default": 12,
+    "aten.unsqueeze.default": 8,
+    "aten.add.Tensor": 7,
+    "aten.mm.default": 7,
+    "aten.expand.default": 6,
+    "aten.slice.Tensor": 4,
+    "aten.sub.Tensor": 3,
+    "aten.clone.default": 3,
+    "aten.pow.Tensor_Scalar": 2,
+    "aten.mean.dim": 2,
+    "aten.rsqrt.default": 2,
+    "aten.cat.default": 2,
+    "aten.mul.Scalar": 2,
+    "aten.arange.start_step": 2,
+    "aten.scalar_tensor.default": 2,
+    "aten.bmm.default": 2,
+    "aten.full.default": 1,
+    "aten.le.Scalar": 1,
+    "aten.logical_and.default": 1,
+    "aten.where.self": 1,
+    "aten._softmax.default": 1,
+    "aten.sigmoid.default": 1
+   }
+  },
+  "bw": {
+   "n_inputs": 35,
+   "aten_ops": {
+    "aten.permute.default": 37,
+    "aten.view.default": 30,
+    "aten.mul.Tensor": 27,
+    "aten.mm.default": 14,
+    "aten.add.Tensor": 14,
+    "aten.sum.dim_IntList": 7,
+    "aten.mul.Scalar": 6,
+    "aten.pow.Tensor_Scalar": 4,
+    "aten.bmm.default": 4,
+    "aten.select.int": 4,
+    "aten.full.default": 4,
+    "aten.slice_scatter.default": 4,
+    "aten.clone.default": 3,
+    "aten.sub.Tensor": 2,
+    "aten.expand.default": 2,
+    "aten.div.Scalar": 2,
+    "aten.squeeze.dims": 2,
+    "aten.neg.default": 2,
+    "aten.sigmoid.default": 1
+   }
+  }
+ }
+}

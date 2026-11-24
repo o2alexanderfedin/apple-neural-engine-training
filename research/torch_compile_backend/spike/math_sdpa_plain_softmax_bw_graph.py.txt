@@ -1,0 +1,175 @@
+
+
+
+def forward(self, primals_1, primals_2, primals_6, primals_7, primals_9, rsqrt, alias, mul, permute, view, permute_2, view_3, permute_4, view_6, view_13, view_14, alias_1, view_16, view_17, permute_8, view_20, add_4, rsqrt_1, alias_2, mul_12, permute_9, view_22, view_23, mul_14, permute_10, view_24, view_25, permute_11, view_26, tangents_1):
+    view_28 = torch.ops.aten.view.default(tangents_1, [64, 256])
+    permute_12 = torch.ops.aten.permute.default(view_28, [1, 0])
+    mm_7 = torch.ops.aten.mm.default(permute_12, view_26);  permute_12 = view_26 = None
+    permute_13 = torch.ops.aten.permute.default(mm_7, [1, 0]);  mm_7 = None
+    permute_14 = torch.ops.aten.permute.default(permute_11, [1, 0]);  permute_11 = None
+    mm_8 = torch.ops.aten.mm.default(view_28, permute_14);  view_28 = permute_14 = None
+    view_29 = torch.ops.aten.view.default(mm_8, [1, 64, 688]);  mm_8 = None
+    permute_15 = torch.ops.aten.permute.default(permute_13, [1, 0]);  permute_13 = None
+    mul_16 = torch.ops.aten.mul.Tensor(view_29, mul_14);  mul_14 = None
+    mul_17 = torch.ops.aten.mul.Tensor(view_29, view_25);  view_29 = view_25 = None
+    view_30 = torch.ops.aten.view.default(mul_16, [64, 688]);  mul_16 = None
+    permute_16 = torch.ops.aten.permute.default(view_30, [1, 0])
+    mm_9 = torch.ops.aten.mm.default(permute_16, view_24);  permute_16 = view_24 = None
+    permute_17 = torch.ops.aten.permute.default(mm_9, [1, 0]);  mm_9 = None
+    permute_18 = torch.ops.aten.permute.default(permute_10, [1, 0]);  permute_10 = None
+    mm_10 = torch.ops.aten.mm.default(view_30, permute_18);  view_30 = permute_18 = None
+    view_31 = torch.ops.aten.view.default(mm_10, [1, 64, 256]);  mm_10 = None
+    permute_19 = torch.ops.aten.permute.default(permute_17, [1, 0]);  permute_17 = None
+    sigmoid_1 = torch.ops.aten.sigmoid.default(view_23)
+    mul_18 = torch.ops.aten.mul.Tensor(mul_17, sigmoid_1);  mul_17 = None
+    sub_3 = torch.ops.aten.sub.Tensor(1, sigmoid_1);  sigmoid_1 = None
+    mul_19 = torch.ops.aten.mul.Tensor(view_23, sub_3);  view_23 = sub_3 = None
+    add_7 = torch.ops.aten.add.Tensor(mul_19, 1);  mul_19 = None
+    mul_20 = torch.ops.aten.mul.Tensor(mul_18, add_7);  mul_18 = add_7 = None
+    view_32 = torch.ops.aten.view.default(mul_20, [64, 688]);  mul_20 = None
+    permute_20 = torch.ops.aten.permute.default(view_32, [1, 0])
+    mm_11 = torch.ops.aten.mm.default(permute_20, view_22);  permute_20 = view_22 = None
+    permute_21 = torch.ops.aten.permute.default(mm_11, [1, 0]);  mm_11 = None
+    permute_22 = torch.ops.aten.permute.default(permute_9, [1, 0]);  permute_9 = None
+    mm_12 = torch.ops.aten.mm.default(view_32, permute_22);  view_32 = permute_22 = None
+    view_33 = torch.ops.aten.view.default(mm_12, [1, 64, 256]);  mm_12 = None
+    add_8 = torch.ops.aten.add.Tensor(view_31, view_33);  view_31 = view_33 = None
+    permute_23 = torch.ops.aten.permute.default(permute_21, [1, 0]);  permute_21 = None
+    mul_21 = torch.ops.aten.mul.Tensor(add_8, mul_12);  mul_12 = None
+    mul_22 = torch.ops.aten.mul.Tensor(add_8, primals_9);  add_8 = primals_9 = None
+    sum_1 = torch.ops.aten.sum.dim_IntList(mul_21, [0, 1], True);  mul_21 = None
+    view_34 = torch.ops.aten.view.default(sum_1, [256]);  sum_1 = None
+    mul_23 = torch.ops.aten.mul.Tensor(mul_22, add_4)
+    mul_24 = torch.ops.aten.mul.Tensor(mul_22, rsqrt_1);  mul_22 = rsqrt_1 = None
+    sum_2 = torch.ops.aten.sum.dim_IntList(mul_23, [2], True);  mul_23 = None
+    add_9 = torch.ops.aten.add.Tensor(tangents_1, mul_24);  tangents_1 = mul_24 = None
+    pow_3 = torch.ops.aten.pow.Tensor_Scalar(alias_2, 3);  alias_2 = None
+    mul_25 = torch.ops.aten.mul.Scalar(sum_2, -0.5);  sum_2 = None
+    mul_26 = torch.ops.aten.mul.Tensor(mul_25, pow_3);  mul_25 = pow_3 = None
+    expand_6 = torch.ops.aten.expand.default(mul_26, [1, 64, 256]);  mul_26 = None
+    div = torch.ops.aten.div.Scalar(expand_6, 256);  expand_6 = None
+    pow_4 = torch.ops.aten.pow.Tensor_Scalar(add_4, 1.0);  add_4 = None
+    mul_27 = torch.ops.aten.mul.Scalar(pow_4, 2.0);  pow_4 = None
+    mul_28 = torch.ops.aten.mul.Tensor(div, mul_27);  div = mul_27 = None
+    add_10 = torch.ops.aten.add.Tensor(add_9, mul_28);  add_9 = mul_28 = None
+    view_35 = torch.ops.aten.view.default(add_10, [64, 256])
+    permute_24 = torch.ops.aten.permute.default(view_35, [1, 0])
+    mm_13 = torch.ops.aten.mm.default(permute_24, view_20);  permute_24 = view_20 = None
+    permute_25 = torch.ops.aten.permute.default(mm_13, [1, 0]);  mm_13 = None
+    permute_26 = torch.ops.aten.permute.default(permute_8, [1, 0]);  permute_8 = None
+    mm_14 = torch.ops.aten.mm.default(view_35, permute_26);  view_35 = permute_26 = None
+    view_36 = torch.ops.aten.view.default(mm_14, [1, 64, 256]);  mm_14 = None
+    permute_27 = torch.ops.aten.permute.default(permute_25, [1, 0]);  permute_25 = None
+    view_37 = torch.ops.aten.view.default(view_36, [1, 64, 8, 32]);  view_36 = None
+    permute_28 = torch.ops.aten.permute.default(view_37, [0, 2, 1, 3]);  view_37 = None
+    view_38 = torch.ops.aten.view.default(permute_28, [8, 64, 32]);  permute_28 = None
+    permute_29 = torch.ops.aten.permute.default(view_16, [0, 2, 1]);  view_16 = None
+    bmm_2 = torch.ops.aten.bmm.default(permute_29, view_38);  permute_29 = None
+    permute_30 = torch.ops.aten.permute.default(view_17, [0, 2, 1]);  view_17 = None
+    bmm_3 = torch.ops.aten.bmm.default(view_38, permute_30);  view_38 = permute_30 = None
+    view_39 = torch.ops.aten.view.default(bmm_2, [1, 8, 64, 32]);  bmm_2 = None
+    view_40 = torch.ops.aten.view.default(bmm_3, [1, 8, 64, 64]);  bmm_3 = None
+    mul_29 = torch.ops.aten.mul.Tensor(view_40, alias_1);  view_40 = None
+    sum_3 = torch.ops.aten.sum.dim_IntList(mul_29, [-1], True)
+    mul_30 = torch.ops.aten.mul.Tensor(alias_1, sum_3);  alias_1 = sum_3 = None
+    sub_4 = torch.ops.aten.sub.Tensor(mul_29, mul_30);  mul_29 = mul_30 = None
+    view_41 = torch.ops.aten.view.default(sub_4, [8, 64, 64]);  sub_4 = None
+    permute_31 = torch.ops.aten.permute.default(view_13, [0, 2, 1]);  view_13 = None
+    bmm_4 = torch.ops.aten.bmm.default(permute_31, view_41);  permute_31 = None
+    permute_32 = torch.ops.aten.permute.default(view_14, [0, 2, 1]);  view_14 = None
+    bmm_5 = torch.ops.aten.bmm.default(view_41, permute_32);  view_41 = permute_32 = None
+    view_42 = torch.ops.aten.view.default(bmm_4, [1, 8, 32, 64]);  bmm_4 = None
+    view_43 = torch.ops.aten.view.default(bmm_5, [1, 8, 64, 32]);  bmm_5 = None
+    mul_31 = torch.ops.aten.mul.Scalar(view_42, 0.42044820762685725);  view_42 = None
+    permute_33 = torch.ops.aten.permute.default(mul_31, [0, 1, 3, 2]);  mul_31 = None
+    mul_32 = torch.ops.aten.mul.Scalar(view_43, 0.42044820762685725);  view_43 = None
+    view_44 = torch.ops.aten.view.default(view_39, [1, 4, 2, 64, 32]);  view_39 = None
+    sum_4 = torch.ops.aten.sum.dim_IntList(view_44, [2], True);  view_44 = None
+    squeeze = torch.ops.aten.squeeze.dims(sum_4, [2]);  sum_4 = None
+    view_45 = torch.ops.aten.view.default(permute_33, [1, 4, 2, 64, 32]);  permute_33 = None
+    sum_5 = torch.ops.aten.sum.dim_IntList(view_45, [2], True);  view_45 = None
+    squeeze_1 = torch.ops.aten.squeeze.dims(sum_5, [2]);  sum_5 = None
+    view_46 = torch.ops.aten.view.default(squeeze_1, [1, 4, 64, 16, 2]);  squeeze_1 = None
+    select = torch.ops.aten.select.int(view_46, -1, 0)
+    select_1 = torch.ops.aten.select.int(view_46, -1, 1);  view_46 = None
+    mul_33 = torch.ops.aten.mul.Tensor(select_1, primals_6)
+    mul_34 = torch.ops.aten.mul.Tensor(select_1, primals_7);  select_1 = None
+    neg = torch.ops.aten.neg.default(select)
+    mul_35 = torch.ops.aten.mul.Tensor(neg, primals_7);  neg = None
+    add_11 = torch.ops.aten.add.Tensor(mul_33, mul_35);  mul_33 = mul_35 = None
+    mul_36 = torch.ops.aten.mul.Tensor(select, primals_6);  select = None
+    add_12 = torch.ops.aten.add.Tensor(mul_34, mul_36);  mul_34 = mul_36 = None
+    full_1 = torch.ops.aten.full.default([1, 4, 64, 32], 0, dtype = torch.float32, layout = torch.strided, device = device(type='cpu'), pin_memory = False)
+    slice_scatter = torch.ops.aten.slice_scatter.default(full_1, add_11, 3, 1, 9223372036854775807, 2);  full_1 = add_11 = None
+    full_2 = torch.ops.aten.full.default([1, 4, 64, 32], 0, dtype = torch.float32, layout = torch.strided, device = device(type='cpu'), pin_memory = False)
+    slice_scatter_1 = torch.ops.aten.slice_scatter.default(full_2, add_12, 3, 0, 9223372036854775807, 2);  full_2 = add_12 = None
+    add_13 = torch.ops.aten.add.Tensor(slice_scatter, slice_scatter_1);  slice_scatter = slice_scatter_1 = None
+    view_47 = torch.ops.aten.view.default(mul_32, [1, 8, 64, 16, 2]);  mul_32 = None
+    select_2 = torch.ops.aten.select.int(view_47, -1, 0)
+    select_3 = torch.ops.aten.select.int(view_47, -1, 1);  view_47 = None
+    mul_37 = torch.ops.aten.mul.Tensor(select_3, primals_6)
+    mul_38 = torch.ops.aten.mul.Tensor(select_3, primals_7);  select_3 = None
+    neg_1 = torch.ops.aten.neg.default(select_2)
+    mul_39 = torch.ops.aten.mul.Tensor(neg_1, primals_7);  neg_1 = primals_7 = None
+    add_14 = torch.ops.aten.add.Tensor(mul_37, mul_39);  mul_37 = mul_39 = None
+    mul_40 = torch.ops.aten.mul.Tensor(select_2, primals_6);  select_2 = primals_6 = None
+    add_15 = torch.ops.aten.add.Tensor(mul_38, mul_40);  mul_38 = mul_40 = None
+    full_3 = torch.ops.aten.full.default([1, 8, 64, 32], 0, dtype = torch.float32, layout = torch.strided, device = device(type='cpu'), pin_memory = False)
+    slice_scatter_2 = torch.ops.aten.slice_scatter.default(full_3, add_14, 3, 1, 9223372036854775807, 2);  full_3 = add_14 = None
+    full_4 = torch.ops.aten.full.default([1, 8, 64, 32], 0, dtype = torch.float32, layout = torch.strided, device = device(type='cpu'), pin_memory = False)
+    slice_scatter_3 = torch.ops.aten.slice_scatter.default(full_4, add_15, 3, 0, 9223372036854775807, 2);  full_4 = add_15 = None
+    add_16 = torch.ops.aten.add.Tensor(slice_scatter_2, slice_scatter_3);  slice_scatter_2 = slice_scatter_3 = None
+    permute_34 = torch.ops.aten.permute.default(squeeze, [0, 2, 1, 3]);  squeeze = None
+    clone_3 = torch.ops.aten.clone.default(permute_34, memory_format = torch.contiguous_format);  permute_34 = None
+    view_48 = torch.ops.aten.view.default(clone_3, [1, 64, 128]);  clone_3 = None
+    view_49 = torch.ops.aten.view.default(view_48, [64, 128]);  view_48 = None
+    permute_35 = torch.ops.aten.permute.default(view_49, [1, 0])
+    mm_15 = torch.ops.aten.mm.default(permute_35, view_6);  permute_35 = view_6 = None
+    permute_36 = torch.ops.aten.permute.default(mm_15, [1, 0]);  mm_15 = None
+    permute_37 = torch.ops.aten.permute.default(permute_4, [1, 0]);  permute_4 = None
+    mm_16 = torch.ops.aten.mm.default(view_49, permute_37);  view_49 = permute_37 = None
+    view_50 = torch.ops.aten.view.default(mm_16, [1, 64, 256]);  mm_16 = None
+    permute_38 = torch.ops.aten.permute.default(permute_36, [1, 0]);  permute_36 = None
+    permute_39 = torch.ops.aten.permute.default(add_13, [0, 2, 1, 3]);  add_13 = None
+    clone_4 = torch.ops.aten.clone.default(permute_39, memory_format = torch.contiguous_format);  permute_39 = None
+    view_51 = torch.ops.aten.view.default(clone_4, [1, 64, 128]);  clone_4 = None
+    view_52 = torch.ops.aten.view.default(view_51, [64, 128]);  view_51 = None
+    permute_40 = torch.ops.aten.permute.default(view_52, [1, 0])
+    mm_17 = torch.ops.aten.mm.default(permute_40, view_3);  permute_40 = view_3 = None
+    permute_41 = torch.ops.aten.permute.default(mm_17, [1, 0]);  mm_17 = None
+    permute_42 = torch.ops.aten.permute.default(permute_2, [1, 0]);  permute_2 = None
+    mm_18 = torch.ops.aten.mm.default(view_52, permute_42);  view_52 = permute_42 = None
+    view_53 = torch.ops.aten.view.default(mm_18, [1, 64, 256]);  mm_18 = None
+    add_17 = torch.ops.aten.add.Tensor(view_50, view_53);  view_50 = view_53 = None
+    permute_43 = torch.ops.aten.permute.default(permute_41, [1, 0]);  permute_41 = None
+    permute_44 = torch.ops.aten.permute.default(add_16, [0, 2, 1, 3]);  add_16 = None
+    clone_5 = torch.ops.aten.clone.default(permute_44, memory_format = torch.contiguous_format);  permute_44 = None
+    view_54 = torch.ops.aten.view.default(clone_5, [1, 64, 256]);  clone_5 = None
+    view_55 = torch.ops.aten.view.default(view_54, [64, 256]);  view_54 = None
+    permute_45 = torch.ops.aten.permute.default(view_55, [1, 0])
+    mm_19 = torch.ops.aten.mm.default(permute_45, view);  permute_45 = view = None
+    permute_46 = torch.ops.aten.permute.default(mm_19, [1, 0]);  mm_19 = None
+    permute_47 = torch.ops.aten.permute.default(permute, [1, 0]);  permute = None
+    mm_20 = torch.ops.aten.mm.default(view_55, permute_47);  view_55 = permute_47 = None
+    view_56 = torch.ops.aten.view.default(mm_20, [1, 64, 256]);  mm_20 = None
+    add_18 = torch.ops.aten.add.Tensor(add_17, view_56);  add_17 = view_56 = None
+    permute_48 = torch.ops.aten.permute.default(permute_46, [1, 0]);  permute_46 = None
+    mul_41 = torch.ops.aten.mul.Tensor(add_18, mul);  mul = None
+    mul_42 = torch.ops.aten.mul.Tensor(add_18, primals_2);  add_18 = primals_2 = None
+    sum_6 = torch.ops.aten.sum.dim_IntList(mul_41, [0, 1], True);  mul_41 = None
+    view_57 = torch.ops.aten.view.default(sum_6, [256]);  sum_6 = None
+    mul_43 = torch.ops.aten.mul.Tensor(mul_42, primals_1)
+    mul_44 = torch.ops.aten.mul.Tensor(mul_42, rsqrt);  mul_42 = rsqrt = None
+    sum_7 = torch.ops.aten.sum.dim_IntList(mul_43, [2], True);  mul_43 = None
+    add_19 = torch.ops.aten.add.Tensor(add_10, mul_44);  add_10 = mul_44 = None
+    pow_5 = torch.ops.aten.pow.Tensor_Scalar(alias, 3);  alias = None
+    mul_45 = torch.ops.aten.mul.Scalar(sum_7, -0.5);  sum_7 = None
+    mul_46 = torch.ops.aten.mul.Tensor(mul_45, pow_5);  mul_45 = pow_5 = None
+    expand_7 = torch.ops.aten.expand.default(mul_46, [1, 64, 256]);  mul_46 = None
+    div_1 = torch.ops.aten.div.Scalar(expand_7, 256);  expand_7 = None
+    pow_6 = torch.ops.aten.pow.Tensor_Scalar(primals_1, 1.0);  primals_1 = None
+    mul_47 = torch.ops.aten.mul.Scalar(pow_6, 2.0);  pow_6 = None
+    mul_48 = torch.ops.aten.mul.Tensor(div_1, mul_47);  div_1 = mul_47 = None
+    add_20 = torch.ops.aten.add.Tensor(add_19, mul_48);  add_19 = mul_48 = None
+    return (add_20, view_57, permute_48, permute_43, permute_38, None, None, permute_27, view_34, permute_23, permute_19, permute_15)
+    
